@@ -19,6 +19,7 @@ from django.urls import path, include
 from . import views
 from django.contrib import admin
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home_view),
@@ -41,4 +42,6 @@ urlpatterns = [
     path('register/', views.register_profile),
     path('login/', views.login_profile),
     path('logout/', views.logout_profile),
+    path('articles/', views.get_article_by_preference, name='article-preference'),
+    path('article/<int:article_id>/', views.article_detail, name='article-detail'),
 ]
