@@ -23,17 +23,19 @@ from django.contrib import admin
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home_view),
-    path('about/', views.about_view),
+    path('about/', views.about_view, name='about'),
     path('create/', views.create_form_article),
-
-    path('<article>/article/', views.article_detail_view),
-    path('<article>/comment/', views.article_comment),
-    path('<article>/update/', views.update_article),
-    path('<article>/delete/', views.delete_article),
+    path('list/', views.article_list),
 
     path('topics/', views.topics_view),
     path('topics/<topic>/subscribe/', views.topic_subscribe),
     path('topics/<topic>/unsubscribe/', views.topic_unsubscribe),
+
+    path('<article>/comment/', views.article_comment),
+    path('<article>/update/', views.update_article),
+    path('<article>/delete/', views.delete_article),
+
+    
 
     path('profile/<str:username>/', views.profile_username),
     path('set-password/', views.set_password),
@@ -42,6 +44,7 @@ urlpatterns = [
     path('register/', views.register_profile),
     path('login/', views.login_profile),
     path('logout/', views.logout_profile),
-    path('articles/', views.get_article_by_preference, name='article-preference'),
-    path('article/<int:article_id>/', views.article_detail, name='article-detail'),
+    path('articles/', views.get_article_by_preference, name='article_preference'),
+    path('article/<int:article_id>/', views.article_detail, name='article_detail'),
+    path('<article>/', views.article_detail_view),
 ]

@@ -23,3 +23,4 @@ pgsql/
 # static files storage
 /static/*
 !/static/index.html
+.DS_Store

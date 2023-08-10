@@ -6,7 +6,7 @@ from first_app.models import Article, Comment, Topic, UserTopicRelationship, Use
 
 
 def about_view(request):
-    return HttpResponse("This is a site where you can find the latest, current world news")
+    return render(request, 'about.html')
 
 def home_view(request):
     return HttpResponse("Site structure ")
@@ -38,22 +38,22 @@ def topic_unsubscribe(request: HttpRequest, topic: str) -> HttpResponse:
 def profile_username(request: HttpRequest, username: str) -> HttpResponse:
     return HttpResponse(f"Enter username - {username}")
 
-def set_password(request) :
+def set_password(request: HttpRequest) -> HttpResponse:
     return HttpResponse("Enter password")
 
-def set_userdata(request):
+def set_userdata(request: HttpRequest) -> HttpResponse:
     return HttpResponse("Enter userdata")
 
-def deactivate_profile(request):
+def deactivate_profile(request: HttpRequest) -> HttpResponse:
     return HttpResponse("Deactivate profile")
 
-def register_profile(request):
+def register_profile(request: HttpRequest) -> HttpResponse:
     return HttpResponse("Profile registration")
 
-def login_profile(request):
+def login_profile(request: HttpRequest) -> HttpResponse:
     return HttpResponse("Login")
 
-def logout_profile(request):
+def logout_profile(request: HttpRequest) -> HttpResponse:
     return HttpResponse("Logout")
 
 def article_list(request):
@@ -63,7 +63,7 @@ def article_list(request):
 def article_detail(request, article_id):
     article = get_object_or_404(Article, id=article_id)
     comments = Comment.objects.filter(article=article)
-    return render(request, 'article_detail.hhtml', {'article': article, 'comments': comments})
+    return render(request, 'article_detail.html', {'article': article, 'comments': comments})
 
 def user_profile(request, username):
     user = get_object_or_404(User, username=username)
